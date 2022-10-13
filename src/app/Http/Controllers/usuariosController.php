@@ -58,8 +58,8 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
-        $usuarios = Usuarios::get()->where('usuarioid', $id);
-        return UsuariosResource::collection($usuarios);
+        $usuarios = Usuarios::findOrFail($id);
+        return $usuarios;
     }
     /**
      * Show the form for editing the specified resource.
@@ -87,6 +87,7 @@ class usuariosController extends Controller
         $usuarios->email = $request->get('email');
         $usuarios->cpf = $request->get('cpf');
         $usuarios->senha = $request->get('senha');
+        $usuarios->save();
         if ($usuarios->save()) {
             return new UsuariosResource($usuarios);
         };

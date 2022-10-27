@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\usuarios as Usuarios;
 use App\Http\Resources\usuarios as UsuariosResource;
-use GuzzleHttp\Psr7\Message;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 
@@ -30,6 +30,7 @@ class usuariosController extends Controller
     public function create()
     {
         //
+        return view(view:'usuarios.cadastro');
     }
 
     /**
@@ -47,7 +48,8 @@ class usuariosController extends Controller
             'cpf' => $request->get('cpf'),
             'senha' => $request->get('senha')
         ]);
-        return $usuarios;
+       gti
+        
     }
 
     /**
@@ -59,6 +61,17 @@ class usuariosController extends Controller
     public function show($id)
     {
         $usuarios = Usuarios::findOrFail($id);
+        return $usuarios;
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $nome
+     * @return \Illuminate\Http\Response
+     */
+    public function search(string $nome)
+    {
+        $usuarios = Usuarios::where('nome','like', '%'.$nome.'%')->get();
         return $usuarios;
     }
     /**
@@ -81,17 +94,25 @@ class usuariosController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $usuarios = Usuarios::findOrFail($id);       
-        $usuarios->nome = $request->get('nome');
-        $usuarios->sobrenome = $request->get('sobrenome');
-        $usuarios->email = $request->get('email');
-        $usuarios->cpf = $request->get('cpf');
-        $usuarios->senha = $request->get('senha');
-        $usuarios->save();
-        if ($usuarios->save()) {
-            return new UsuariosResource($usuarios);
-        };
+
+        $request->validate([
+            'nome' => 'required|max:191',
+            'sobrenome' => 'required|max:191',
+            'email' => 'required|max:191',
+            'cpf' => 'required|max:191',
+            'senha' => 'required|max:191'
+        ]);
+
+        $usuarios = Usuarios::findOrFail($id);
+        $usuarios->nome = $request->nome;
+        $usuarios->sobrenome = $request->sobrenome;
+        $usuarios->email = $request->email;
+        $usuarios->cpf = $request->cpf;
+        $usuarios->senha = $request->senha;
+        $usuarios->update();
+        return $usuarios;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -101,7 +122,7 @@ class usuariosController extends Controller
      */
     public function destroy($id)
     {
-        $usuarios = Usuarios::findOrFail( $id);
+        $usuarios = Usuarios::findOrFail($id);
         $usuarios->delete();
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\listController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usuariosController;
 
@@ -14,10 +15,11 @@ use App\Http\Controllers\usuariosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+route::get('/search/{nome}',[usuariosController::class,'search']);
 Route::get('/', function () {
     return view('site.home');
+});
+Route::get('/cadastro', function () {
+    return view('site.cadastro');
 });
 

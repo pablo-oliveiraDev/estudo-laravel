@@ -16,8 +16,8 @@ use App\Http\Resources\usuarios;
 |
 */
 
-Route::middleware('auth:api')->get('/usuarios', function (Request $request) {
-    return $request->usuarios();
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
 
@@ -29,4 +29,4 @@ Route::middleware('auth:api')->get('/usuarios', function (Request $request) {
 // Route::post('usuarios', [usuariosController::class, 'store']);
 // //delete usuarios
 // Route::delete('usuarios/{id}', [usuariosController::class, 'destroy']);
-Route::resource('usuarios',UsuariosController::class);
+Route::resource('usuarios',UsuariosController::class)->names('usuarios');

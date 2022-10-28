@@ -19,7 +19,9 @@ class usuariosController extends Controller
     public function index()
     {
         $usuarios = Usuarios::paginate(10);
-        return UsuariosResource::collection($usuarios);
+        dd($usuarios->toArray());
+        return response()->view(view:'usuarios.index');
+           
     }
 
     /**
@@ -48,7 +50,7 @@ class usuariosController extends Controller
             'cpf' => $request->get('cpf'),
             'senha' => $request->get('senha')
         ]);
-       gti
+      return redirect('/cadastro');
         
     }
 

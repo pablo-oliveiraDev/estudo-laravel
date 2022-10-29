@@ -48,8 +48,8 @@ class usuariosController extends Controller
             'cpf' => $request->get('cpf'),
             'senha' => $request->get('senha')
         ]);
-       gti
-        
+     
+
     }
 
     /**

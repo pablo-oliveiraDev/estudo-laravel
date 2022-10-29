@@ -12,15 +12,22 @@
 
 <body>
 
+    
+
+    @foreach ($usuarios as $user)
+        <p>{{$user}}</p>
+    @endforeach
+
+
+     
+
     <a href="{{URL('cadastro')}}">
         <button type="button">Cadastrar</button>
 
     </a>
-    <div class='container' style="color:#fff">
-   @foreach($usuarios as $users){
-    <span>{{users->data->nome}}</span>
-   }
-    @endforeach    
+    
+        <div class='container' style="color:#fff">
+    
     </div>
     
 </body>

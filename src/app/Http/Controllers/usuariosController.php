@@ -18,10 +18,13 @@ class usuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuarios::paginate(10);
-        dd($usuarios->toArray());
-        return response()->view(view:'usuarios.index');
+        // $usuarios = Usuarios::paginate(10);
+        // dd($usuarios->toArray());
+        // return view('site.home',compact('usuarios'));
+
+           $usuarios = Usuarios::all();
            
+           return view('site.home',compact('usuarios'));
     }
 
     /**

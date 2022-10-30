@@ -15,11 +15,10 @@ use App\Http\Controllers\usuariosController;
 |
 */
 
-route::get('/search/{nome}',[usuariosController::class,'search']);
-Route::get('/', function () {
-    return view('site.home');
-});
-Route::get('/cadastro', function () {
-    return view('site.cadastro');
-});
+route::get('/search/{nome}',[usuariosController::class,'search'])->name('usuarios');
+Route::get('/', [usuariosController::class, 'index']);
+// Route::get('/usuarios/{id}', [usuariosController::class, 'show']);
+// Route::get('/cadastro', function () {
+//     return view('site.cadastro');
+// });
 

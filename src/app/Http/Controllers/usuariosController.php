@@ -18,13 +18,13 @@ class usuariosController extends Controller
      */
     public function index()
     {
-        // $usuarios = Usuarios::paginate(10);
-        // dd($usuarios->toArray());
-        // return view('site.home',compact('usuarios'));
+        $usuarios = Usuarios::paginate('');
 
-           $usuarios = Usuarios::all();
+        return view('site.home', compact('usuarios'));
 
-           return view('site.home',compact('usuarios'));
+        //    $usuarios = Usuarios::all();
+
+        //    return view(view:'usuarios.index',compact("usuarios"));
     }
 
     /**
@@ -35,7 +35,7 @@ class usuariosController extends Controller
     public function create()
     {
         //
-        return view(view:'usuarios.cadastro');
+        return view(view: 'usuarios.cadastro');
     }
 
     /**
@@ -53,8 +53,8 @@ class usuariosController extends Controller
             'cpf' => $request->get('cpf'),
             'senha' => $request->get('senha')
         ]);
-      
 
+        return redirect('/')->with('msg', 'usuario cadastrado com sucesso!');
     }
 
     /**
@@ -65,8 +65,14 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
+        // $search=request('search');
+
+        // if($search){
+
+        // }else{
         $usuarios = Usuarios::findOrFail($id);
-        return $usuarios;
+
+        return view('site.user', compact('usuarios'));
     }
     /**
      * Display the specified resource.
@@ -74,10 +80,16 @@ class usuariosController extends Controller
      * @param  string  $nome
      * @return \Illuminate\Http\Response
      */
-    public function search(string $nome)
+    public function search(Request $request, string $nome)
     {
-        $usuarios = Usuarios::where('nome','like', '%'.$nome.'%')->get();
-        return $usuarios;
+        $nome = request('nome');
+        if ($nome) {
+            $usuarios = Usuarios::where('nome', 'like', '%' . $nome . '%')->get();
+
+            return view('site.home', compact('usuarios'));
+        } else {
+          return redirect('/');
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -129,5 +141,6 @@ class usuariosController extends Controller
     {
         $usuarios = Usuarios::findOrFail($id);
         $usuarios->delete();
+        return redirect('/')->with('msg', 'Usuario deletado com sucesso !');
     }
 }

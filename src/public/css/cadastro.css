@@ -1,21 +1,2 @@
-* {
-    list-style: none;
-    text-decoration: none;
-}
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #00ff;
 
-}
-
-;
-
-.container form label {
-
-    border: solid 2px #000;
-
-}

@@ -1,0 +1,122 @@
+/* main */
+* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+}
+
+.navbar {
+    background: #000;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 0;
+    color: #000;
+    height: 40px;
+}
+.box-pesquisar{
+    margin-right: 20px;
+}
+.items{
+    margin-left: 20px;
+}
+.label-pesquisar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 2px;
+    padding-left: 1ch;
+    background: grey;
+    border: solid 2px #000;
+
+}
+
+.label-pesquisar input {
+    margin-left: 5ch;
+    padding: 0;
+}
+
+/* main */
+
+/*home*/
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+/*home*/
+
+table,
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+table {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #00ff;
+
+
+}
+
+
+
+.cadastro-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 2px;
+    padding-left: 1ch;
+    background: grey;
+    border: solid 2px #000;
+
+}
+
+.cadastro-container form label input {
+    margin-left: 5ch;
+    padding: 0;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #00ff;
+
+
+}
+
+
+
+.user-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 2px;
+    padding-left: 1ch;
+    background: grey;
+    border: solid 2px #000;
+
+}
+
+.user-container form label input {
+    margin-left: 5ch;
+    padding: 0;
+}

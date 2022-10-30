@@ -18,8 +18,13 @@ class usuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuarios::paginate(10);
-        return UsuariosResource::collection($usuarios);
+        // $usuarios = Usuarios::paginate(10);
+        // dd($usuarios->toArray());
+        // return view('site.home',compact('usuarios'));
+
+           $usuarios = Usuarios::all();
+
+           return view('site.home',compact('usuarios'));
     }
 
     /**
@@ -48,7 +53,7 @@ class usuariosController extends Controller
             'cpf' => $request->get('cpf'),
             'senha' => $request->get('senha')
         ]);
-     
+      
 
     }
 

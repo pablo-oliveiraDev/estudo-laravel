@@ -88,7 +88,7 @@ class usuariosController extends Controller
 
             return view('site.home', compact('usuarios'));
         } else {
-          return redirect('/');
+            return redirect('/');
         }
     }
     /**
@@ -127,7 +127,7 @@ class usuariosController extends Controller
         $usuarios->cpf = $request->cpf;
         $usuarios->senha = $request->senha;
         $usuarios->update();
-        return $usuarios;
+        return redirect('/');
     }
 
 
